@@ -28,11 +28,11 @@ int init()
 	if ( fs_init == 0 )
 	{
 	
-	// estudando inicialização do FS.
+	
 	
 	}
 	fs_init = 1; 
-	return SUCESSO;
+	return SUCESS;
 }
 
 /*-----------------------------------------------------------------------------
@@ -81,7 +81,7 @@ FILE2 create2 (char *filename)
 	if (filename = NULL || strlen(filename)==0)
 		return ERRO; 
 
-	// continua.
+	
 
 
 }
