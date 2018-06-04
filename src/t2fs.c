@@ -19,16 +19,42 @@ typedef unsigned int DWORD;
 
 int fs_init = 0 // flag de inicialização do FS.
 char* cwd; // diretório corrente
+DWORD cwdCluster;
+
 
 //Inicializa o FS.
 // Boa prática é rodar o init no início da cada uma das funções para garantir que o FS esteja inicializado.
 //se já estiver inicializado retorna um sucesso, se não estiver inicializado, inicializa.
 int init()
 {
+	int i, j;
+
 	if ( fs_init == 0 )
 	{
 	
-	// estudando inicialização do FS.
+		cwd = malloc(sizeof(char)*57); // pq?
+		strcpy(cwd, "/");
+
+		cwdCluster = superbloco->RootDirCluster; // Entender melhor estrutura de dados.
+		
+		for (i = 0; i < MAX_DIR; ++i)
+		}
+			if (dirList[i] == NULL)
+			{
+			dirList[i] = malloc(sizeof(OPENFILE_t));
+			dirList[i]->ocupado=0;
+			}
+		}
+
+		for(i=0; i < MAX_FILE; j++)
+		{
+			if(fileList == NULL)
+			{
+			fileList[i] = malloc(sizeof(OPENFILE_t));
+			fileList[i]->ocupado =0;
+			}
+		}
+		
 	
 	}
 	fs_init = 1; 
