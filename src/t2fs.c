@@ -101,14 +101,76 @@ Saída:	Se a operação foi realizada com sucesso, a função retorna o handle do arq
 	Em caso de erro, deve ser retornado um valor negativo.
 -----------------------------------------------------------------------------*/
 FILE2 create2 (char *filename)
-{
+{// verificar variaveis, e erros.
 	init();	
 	// caso de arquivo nulo ou vazio.
 	if (filename = NULL || strlen(filename)==0)
 		return ERRO; 
 
-	// continua.
+	int handle = getFileHandle();
+	int qtd = 0;
 
+	if(handle < 0)
+		return ERRO;
+
+	while((component = strsep(&path, "/")) != NULL)
+	{
+		if (strcmp(component, "") == 0)
+		}
+			if (path == NULL)
+				return ERRO;
+			continue;
+		}		
+		qtd++;
+		
+		if (strlen(component) > MAX_FILE_NAME_SIZE)
+			return ERRO;
+		else
+			memcpy(record.name, component, 55);
+
+	}
+	
+	char *pathArray[qtd];
+	filenameToArray(filename, pathArray);
+	
+	clusterNumber = getNextFreeFatId();
+	fileList[handle]->ocupado1;
+	fileList[handle]->cp=0;
+	fileList[handle]->type=0x01;
+	fileList[handle]->size=0;
+	fileList[handle]->firstCluster = clusterNumber;
+
+
+	strcpy(fileList[handle]->name, record.name);
+	record.TypeVal-0x01;
+
+
+	if (filename[0] == '/')
+		parentDir = superbloco->RootDirCluster;
+	else
+		parentDir = cwdCluster;
+
+	for(i=0; i < qtd-1; i++)
+	{
+		parentDir = existDir(parentDir, pathArray[i]);
+		if(parentDir==-1)
+			return ERRO;
+	}
+	
+	fileList[handle]->clusterPai = parentDir;
+	
+	if(getFileEntry(parentDir, pathArray[qtd -1])!= NULL)
+		return ERRO;
+
+	else
+	{
+		if(writeEntry(parentDir, &record) == -1)
+			return ERRO;
+		readFromFAT(clusterNumber);
+		writeToFAT(clusterNunber, 0xFFFFFFFF);
+		readFromFAT(clusterNumber);
+	}
+	return handle;
 
 }
 /*-----------------------------------------------------------------------------
