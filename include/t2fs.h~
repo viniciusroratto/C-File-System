@@ -64,17 +64,6 @@ typedef struct {
 	DWORD firstCluster;
 }DIRSTATUS;
 
-typedef struct {
-	int ocupado;					//0 = closed, 1 = open
-	BYTE type;						//0 = invalid, 1 = file, 2 = directory
-	DWORD firstCluster;				//Number of the first cluster used
-	int cp;							//Current pointer (points to the byte "in use")
-	int size;						//File size in bytes
-    DWORD clusterPai;                //numero do cluster do pai
-    char name[MAX_FILE_NAME_SIZE];   //nome do arquivo
-} FILESTATUS;
-
-
 #pragma pack(pop)
 
 
